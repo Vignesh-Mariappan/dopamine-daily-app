@@ -1,11 +1,21 @@
-import './App.css'
-
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import './App.css';
+import Error from './pages/Error';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import ProtectedRoutes from './utils/ProtectedRoutes';
 function App() {
 
   return (
-    <h1 className="text-3xl font-bold underline">
-      Create habits with Dopamine Daily
-    </h1>
+    <BrowserRouter>
+      <Routes>
+        <Route element={ <ProtectedRoutes /> }>
+          <Route path="/" element={ <Home /> } />
+        </Route>
+        <Route path="/login" element={ <Login /> } />
+        <Route path='*' element={ <Error /> } />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
