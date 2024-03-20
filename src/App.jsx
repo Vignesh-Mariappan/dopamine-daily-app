@@ -4,18 +4,23 @@ import Error from './pages/Error';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import ProtectedRoutes from './utils/ProtectedRoutes';
+import { CustomProvider } from 'rsuite';
+import 'rsuite/dist/rsuite.min.css';
+
 function App() {
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={ <ProtectedRoutes /> }>
-          <Route path="/" element={ <Home /> } />
-        </Route>
-        <Route path="/login" element={ <Login /> } />
-        <Route path='*' element={ <Error /> } />
-      </Routes>
-    </BrowserRouter>
+    <CustomProvider theme="dark">
+      <BrowserRouter>
+        <Routes>
+          <Route element={ <ProtectedRoutes /> }>
+            <Route path="/" element={ <Home /> } />
+          </Route>
+          <Route path="/login" element={ <Login /> } />
+          <Route path='*' element={ <Error /> } />
+        </Routes>
+      </BrowserRouter>
+    </CustomProvider>
   )
 }
 
