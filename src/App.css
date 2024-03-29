@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 #error-page {
     display: flex;
     justify-content: center;
@@ -5,4 +11,46 @@
     flex-direction: column;
     gap: 20px;
     height: 100vh;
+}
+
+.app-header {
+    background: linear-gradient(225deg, #FFB800 0%, #FF881B 100%);
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent
+}
+
+.layout {
+    display: grid;
+    grid-template-rows: 60px 1fr;
+    grid-template-columns: 1fr;
+    height: 100vh;
+}
+
+.header {
+    border-bottom: 1px solid rgba(203, 213, 225, 0.1);
+    border-bottom: 1px solid #fefefe81;
+
+}
+
+.main {
+    display: grid;
+    grid-template-rows: 42px 1fr;
+    grid-template-columns: minmax(600px, 1200px);
+    margin: 0 auto;
+}
+
+.btns button:hover {
+    background-color: rgb(234, 234, 234, .1);
+}
+
+.rs-calendar-table-cell-un-same-month {
+    pointer-events: none;
+}
+
+@media screen and (max-width: 767px) {
+    .main {
+        grid-template-rows: 90px 1fr;
+        grid-template-columns: 1fr;
+    }
 }
