@@ -48,6 +48,44 @@
     pointer-events: none;
 }
 
+/* for toaster */
+.message-toaster-container {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+.message-toast {
+    width: 300px;
+    padding: 20px 28px 20px 20px;
+    position: relative;
+    height: auto;
+    border-radius: 10px;
+    animation: toasterSlideIn 100ms cubic-bezier(0.1, 0.7, 1.0, 0.1);
+}
+
+.message-toast .toast-message-close-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+@keyframes toasterSlideIn {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0)
+    }
+}
+
 @media screen and (max-width: 767px) {
     .main {
         grid-template-rows: 90px 1fr;
