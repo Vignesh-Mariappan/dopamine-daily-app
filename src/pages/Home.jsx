@@ -10,8 +10,9 @@ import bellSound from "../assets/sounds/finished-task-bell-sound.mp3";
 import WithTooltip from "../utils/WithTooltip";
 import { MONTHS } from "../utils/constants";
 import { useFormInput } from '../hooks/useFormInput';
-// import Message from '../components/Message';
-// import useMessageToaster from '../hooks/useMessageToaster';
+import Message from '../components/Message';
+import useMessageToaster from '../hooks/useMessageToaster';
+import MessageToaster from '../components/MessageToaster';
 
 const Home = () => {
     const [days, setDays] = useState(new Map());
@@ -21,13 +22,13 @@ const Home = () => {
     const habitInputRef = useRef(null);
     const habitInputProps = useFormInput("");
     const [readOnlyInput, setReadOnlyInput] = useState(false);
-    // const [toaster, toastMessages] = useMessageToaster();
+    const toaster = useMessageToaster();
 
-    // const message = (
-    //     <Message type={"success"} closable>
-    //         <strong>Success!</strong> Habit Edited Successfully.
-    //     </Message>
-    // );
+    const message = (
+        <Message type={"success"} closable duration={5000}>
+            <strong>Success!</strong> Habit Edited Successfully.
+        </Message>
+    );
 
     useEffect(() => {
         habitInputRef?.current && habitInputRef.current.focus();
@@ -58,9 +59,9 @@ const Home = () => {
 
         setDays(prevDays => {
             if (btnSelected === "Finished") {
-                prevDays.set(month + day, true)
+                prevDays.set(month + day, true);
             } else if (btnSelected === "Not Finished") {
-                prevDays.set(month + day, false)
+                prevDays.set(month + day, false);
             }
 
             return prevDays
@@ -74,11 +75,9 @@ const Home = () => {
     }
 
     function onEnterKeyPress(event) {
-        // console.log(event);
-
         if (event.key === "Enter" || event.keyCode === 13) {
             setReadOnlyInput(true);
-            // toaster.push(message, 5000);
+            toaster.push(message);
         }
     }
 
@@ -87,19 +86,18 @@ const Home = () => {
         habitInputRef.current.focus();
     }
 
-
-
     return (
         <main className="font-bold p-4 main">
+            <MessageToaster {...toaster} />
             <div className="show-grid flex justify-start items-center">
                 <div className="flex items-center flex-wrap gap-2 w-[100%] mx-1">
                     <Input ref={habitInputRef} readOnly={readOnlyInput} style={{ maxWidth: "500px", userSelect: "none", border: "1px solid #3c3f43", cursor: readOnlyInput ? "default" : "auto" }} placeholder="Enter your habit to be built..." {...habitInputProps} onKeyUp={onEnterKeyPress} />
                     {readOnlyInput ? (
-                        <WithTooltip placement={"top"} content={"Enter the habit"}>
+                        <WithTooltip placement={"top"} content={"Edit the habit"}>
                             <IconButton onClick={editHabitIconHandler} className="flex justify-center items-center rs-theme-dark" icon={<EditIcon />} size="lg" appearance="default"></IconButton>
                         </WithTooltip>
                     ) : (
-                        <WithTooltip placement={"top"} content={"Edit the habit"}>
+                        <WithTooltip placement={"top"} content={"Save the habit"}>
                             <IconButton onClick={() => setReadOnlyInput(true)} className="flex justify-center items-center rs-theme-dark" icon={<PlusIcon />} size="lg" appearance="default"></IconButton>
                         </WithTooltip>
                     )}
