@@ -1,7 +1,7 @@
 import CloseIcon from '@rsuite/icons/Close';
 import { useEffect } from 'react';
 
-const Message = ({ type = "info", closable, children, duration = 5000, index, remove }) => {
+const Message = ({ type = "info", closable, children, duration = 2000, index, remove }) => {
     const toastMsgBg = {
         info: '#1499ef',
         success: '#58b15b',

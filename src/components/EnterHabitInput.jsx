@@ -1,9 +1,10 @@
-import { IconButton, Input, Message } from "rsuite"
+import { IconButton, Input } from "rsuite"
 import WithTooltip from "../utils/WithTooltip"
 import EditIcon from '@rsuite/icons/Edit';
 import PlusIcon from '@rsuite/icons/Plus';
 import { useEffect, useRef, useState } from "react";
 import { useFormInput } from "../hooks/useFormInput";
+import Message from "./Message";
 
 const EnterHabitInput = ({ toaster }) => {
     const habitInputRef = useRef(null);
@@ -11,7 +12,7 @@ const EnterHabitInput = ({ toaster }) => {
     const [readOnlyInput, setReadOnlyInput] = useState(false);
 
     const message = (
-        <Message type={"success"} closable duration={5000}>
+        <Message type={"success"} closable duration={2000}>
             <strong>Success!</strong> Habit Edited Successfully.
         </Message>
     );
