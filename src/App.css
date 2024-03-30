@@ -75,6 +75,7 @@
     height: auto;
     border-radius: 10px;
     animation: toasterSlideIn 100ms cubic-bezier(0.1, 0.7, 1.0, 0.1);
+    color: #181818;
 }
 
 .message-toast .toast-message-close-icon {
