@@ -48,6 +48,14 @@
     pointer-events: none;
 }
 
+.enter-habit-input {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 500px;
+    border: 1px solid #3c3f43;
+}
+
 /* for toaster */
 .message-toaster-container {
     position: fixed;
