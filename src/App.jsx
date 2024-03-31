@@ -13,11 +13,11 @@ function App() {
     <CustomProvider theme="dark">
       <BrowserRouter>
         <Routes>
-          <Route element={ <ProtectedRoutes /> }>
-            <Route path="/" element={ <Home /> } />
+          <Route element={<ProtectedRoutes />}>
+            <Route path="/" element={<Home />} />
           </Route>
-          <Route path="/login" element={ <Login /> } />
-          <Route path='*' element={ <Error /> } />
+          <Route path="/login" element={<Login />} />
+          <Route path='*' element={<Error />} />
         </Routes>
       </BrowserRouter>
     </CustomProvider>

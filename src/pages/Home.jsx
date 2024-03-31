@@ -45,7 +45,7 @@ const Home = () => {
             <MessageToaster {...toaster} />
             <div className="flex justify-end">
                 <ButtonToolbar>
-                    <Button appearance="ghost" onClick={createNewHabit}>Create Habit</Button>
+                    <Button appearance="ghost" className='animate-slideInDown' onClick={createNewHabit}>Create Habit</Button>
                     {/* <Button appearance="ghost" color="red">Remove Habit</Button> */}
                 </ButtonToolbar>
             </div>

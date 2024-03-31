@@ -11,6 +11,7 @@ const HabitBuilderCalendar = ({ btnSelected }) => {
     const [days, setDays] = useState(new Map());
     const [_, forceUpdate] = useReducer(x => x + 1, 0);
     const [playSound] = useSound(bellSound);
+    const [showCalendarAnim, setShowCalendarAnim] = useState(true);
 
     function renderCell(date) {
         const day = date.getDate();
@@ -49,7 +50,7 @@ const HabitBuilderCalendar = ({ btnSelected }) => {
     }
 
     return (
-        <Calendar compact={isMobile} cellClassName={date => date > new Date() && `rs-calendar-table-cell-un-same-month`} bordered onSelect={onCalendarDateSelect} renderCell={renderCell} />
+        <Calendar className={showCalendarAnim && 'calendar-slide-in-up'} onAnimationEnd={() => setShowCalendarAnim(false)} compact={isMobile} cellClassName={date => date > new Date() && `rs-calendar-table-cell-un-same-month`} bordered onSelect={onCalendarDateSelect} renderCell={renderCell} />
     )
 }
 
